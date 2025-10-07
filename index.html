@@ -109,6 +109,7 @@
         const img = document.createElement('img');
         img.src = `pictures/${folder}/DSC_${String(i).padStart(4, '0')}.JPG`;
         img.alt = `${folder} photo ${i}`;
+        img.loading = 'lazy';
         img.onclick = () => openLightbox(img.src);
         gallery.appendChild(img);
       }
