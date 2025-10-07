@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BGmicrobiomes Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      padding: 1rem;
+      background: #263238;
+      color: white;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      background: #37474f;
+      padding: 0.5rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>BGmicrobiomes Workshop Gallery</h1>
+  <nav>
+    <a href="#" onclick="loadGallery('Day1')">Day 1</a>
+    <a href="#" onclick="loadGallery('Day2')">Day 2</a>
+    <a href="#" onclick="loadGallery('Day3')">Day 3</a>
+    <a href="#" onclick="loadGallery('Day4')">Day 4</a>
+    <a href="#" onclick="loadGallery('Day5')">Day 5</a>
+    <a href="#" onclick="loadGallery('GalaDinner')">Gala Dinner</a>
+  </nav>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    function loadGallery(folder) {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      // List of images per folder (you can adjust number range)
+      const count = 20; // change this to the number of images per day
+      for (let i = 1; i <= count; i++) {
+        const img = document.createElement('img');
+        img.src = `pictures/${folder}/DSC_${String(i).padStart(4, '0')}.JPG`;
+        img.alt = `${folder} photo ${i}`;
+        gallery.appendChild(img);
+      }
+    }
+  </script>
+</body>
+</html>
