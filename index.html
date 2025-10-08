@@ -1,128 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BGmicrobiomes Gallery</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      text-align: center;
-      padding: 1rem;
-      background: #263238;
-      color: white;
-      margin: 0;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background: #37474f;
-      padding: 0.5rem;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 0.3rem 0.6rem;
-    }
-    nav a:hover {
-      background: #455a64;
-      border-radius: 4px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 10px;
-      padding: 10px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BiomeFUN2025 Workshop Gallery</title>
 
-    /* Lightbox overlay */
-    #lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      justify-content: center;
-      align-items: center;
-    }
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-  </style>
-</head>
-<body>
-  <h1>BGmicrobiomes Workshop Gallery</h1>
-  <nav>
-    <a href="#" onclick="loadGallery('Day1')">Day 1</a>
-    <a href="#" onclick="loadGallery('Day2')">Day 2</a>
-    <a href="#" onclick="loadGallery('Day3')">Day 3</a>
-    <a href="#" onclick="loadGallery('Day4')">Day 4</a>
-    <a href="#" onclick="loadGallery('Day5')">Day 5</a>
-    <a href="#" onclick="loadGallery('GalaDinner')">Gala Dinner</a>
-  </nav>
-  <div class="gallery" id="gallery"></div>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Lightbox element -->
-  <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Large view">
-  </div>
+    <!-- FontAwesome JS-->
+    <script defer src="fontawesome/all.min.js"></script>
+  </head>
+  <body>
+    <!-- Hero section -->
+    <div class="hero">
+      <div class="logos">
+        <img src="logos/fems.svg" alt="Logo 1" />
+        <img src="logos/delft.svg" alt="Logo 2" />
+        <img src="logos/UB.svg" alt="Logo 3" />
+        <img src="logos/BF.svg" alt="Logo 4" />
+      </div>
 
-  <script>
-    // Number of images per folder
-    const imageCounts = {
-      Day1: 131,
-      Day2: 60,
-      Day3: 24,
-      Day4: 65,
-      Day5: 40,
-      GalaDinner: 111
-    };
+      <div class="slideshow">
+        <img src="pictures/Day1/DSC_0079.JPG" alt="" />
+        <img src="pictures/Day1/DSC_0062.JPG" alt="" />
+        <img src="pictures/Day1/DSC_0070.JPG" alt="" />
+        <img src="pictures/Day1/DSC_0078.JPG" alt="" />
+        <img src="pictures/Day1/DSC_0002.JPG" alt="" />
+      </div>
 
-    function loadGallery(folder) {
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = '';
-      const count = imageCounts[folder];
-      for (let i = 1; i <= count; i++) {
-        const img = document.createElement('img');
-        img.src = `pictures/${folder}/DSC_${String(i).padStart(4, '0')}.JPG`;
-        img.alt = `${folder} photo ${i}`;
-        img.loading = 'lazy';
-        img.onclick = () => openLightbox(img.src);
-        gallery.appendChild(img);
+      <div class="hero-content">
+        <h1>BiomeFUN 2025 Workshop Gallery</h1>
+        <div class="hero-meta">
+          <span
+            ><i class="far fa-calendar-alt"></i> 15 – 19 September 2025</span
+          >
+          <span><i class="fas fa-map-marker-alt"></i> Belgrade, Serbia</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#home" onclick="showHome()">Home</a>
+      <a href="#gallery" onclick="loadGallery('Day1')">Day 1</a>
+      <a href="#gallery" onclick="loadGallery('Day2')">Day 2</a>
+      <a href="#gallery" onclick="loadGallery('Day3')">Day 3</a>
+      <a href="#gallery" onclick="loadGallery('Day4')">Day 4</a>
+      <a href="#gallery" onclick="loadGallery('Day5')">Day 5</a>
+      <a href="#gallery" onclick="loadGallery('GalaDinner')">Gala Dinner</a>
+    </nav>
+
+    <!-- Home -->
+    <section id="home" class="home-section">
+      <div class="home-content">
+        <h2>Welcome to the BiomeFUN 2025 Workshop Gallery</h2>
+        <p>
+          The <strong>BiomeFUN2025 Workshop</strong>, held in Belgrade from
+          <strong>15-19 September 2025</strong>, brought together young
+          researchers and experts in microbiome science and bioinformatics to
+          share knowledge, gain practical skills, and build new collaborations.
+        </p>
+
+        <p>
+          This gallery captures the spirit of the event - insightful lectures,
+          hands-on sessions, engaging discussions, and the friendships formed
+          along the way.
+        </p>
+
+        <p>
+          A heartfelt <strong>thank you</strong> to all participants and
+          lecturers for making this week of science and community truly
+          memorable.
+        </p>
+
+        <div class="home-image">
+          <img
+            src="pictures/Day2/DSC_0043.JPG"
+            alt="Group photo from BiomeFUN2025"
+          />
+          <p class="caption">Group photo – BiomeFUN2025, Belgrade</p>
+        </div>
+
+        <div class="download-gallery">
+          <p>
+            You can download the entire gallery as a ZIP file from our Drive:
+          </p>
+          <a
+            href="https://drive.google.com/file/d/1qYzbgYFp9nAOzVA1Sf4ggWVal9hkgBiN/view?usp=sharing"
+            target="_blank"
+            class="download-btn"
+          >
+            Download Full Gallery
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <div class="gallery" id="gallery"></div>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+      <span class="close" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="" alt="Large view" />
+      <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+      <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-5 theme-bg-primary">
+      <div class="text-center">
+        <p>&copy; 2025 BiomeFUN Workshop. All rights reserved.</p>
+        <p>
+          Organized by:
+          <strong>Faculty of Biology, University of Belgrade</strong>
+          &
+          <strong>Delft University of Technology</strong>
+          <br />
+          Sponsored by:
+          <strong
+            >Federation of European Microbiological Societies (FEMS)</strong
+          >
+          &
+          <strong
+            >The Ministry of Science, Technological Development and Innovation
+            of the Republic of Serbia</strong
+          >
+          <br />
+          <br />
+          Contact:
+          <a href="mailto:belgrademicrobiomeworkshop@gmail.com"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Number of images per folder
+      const imageCounts = {
+        Day1: 131,
+        Day2: 60,
+        Day3: 24,
+        Day4: 65,
+        Day5: 40,
+        GalaDinner: 111,
+      };
+
+      let currentFolder = null;
+      let currentIndex = 0;
+
+      // Load gallery and hide home section
+      function loadGallery(folder) {
+        currentFolder = folder; // store folder for lightbox navigation
+        const gallery = document.getElementById("gallery");
+        const homeSection = document.getElementById("home");
+
+        // Hide home section with fade-out
+        if (homeSection) {
+          homeSection.classList.remove("show");
+          setTimeout(() => {
+            homeSection.style.display = "none";
+          }, 600); // match transition duration
+        }
+
+        // Clear existing gallery
+        gallery.innerHTML = "";
+
+        const count = imageCounts[folder];
+        for (let i = 1; i <= count; i++) {
+          const img = document.createElement("img");
+          img.src = `pictures/${folder}/DSC_${String(i).padStart(4, "0")}.JPG`;
+          img.alt = `${folder} photo ${i}`;
+          img.loading = "lazy";
+          img.onclick = () => openLightbox(i); // pass index
+          gallery.appendChild(img);
+        }
+
+        // Scroll to gallery
+        gallery.scrollIntoView({ behavior: "smooth" });
       }
-    }
 
-    function openLightbox(src) {
-      document.getElementById('lightbox').style.display = 'flex';
-      document.getElementById('lightbox-img').src = src;
-    }
+      // Show Home section with fade-in
+      function showHome() {
+        const homeSection = document.getElementById("home");
+        const gallery = document.getElementById("gallery");
 
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  </script>
-</body>
+        // Clear gallery
+        gallery.innerHTML = "";
+
+        // Show home with fade-in
+        if (homeSection) {
+          homeSection.style.display = "block";
+          setTimeout(() => {
+            homeSection.classList.add("show");
+          }, 10); // small delay to trigger transition
+        }
+
+        // Scroll to top
+        homeSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Open lightbox
+      function openLightbox(index) {
+        if (!currentFolder) return;
+
+        currentIndex = index;
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = `pictures/${currentFolder}/DSC_${String(
+          currentIndex
+        ).padStart(4, "0")}.JPG`;
+        lightbox.style.display = "flex";
+      }
+
+      // Close lightbox
+      function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+      }
+
+      // Navigate to next/previous image
+      function changeImage(direction) {
+        if (!currentFolder) return;
+        const count = imageCounts[currentFolder];
+
+        currentIndex += direction;
+        if (currentIndex < 1) currentIndex = count; // loop to last
+        if (currentIndex > count) currentIndex = 1; // loop to first
+
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = `pictures/${currentFolder}/DSC_${String(
+          currentIndex
+        ).padStart(4, "0")}.JPG`;
+      }
+
+      // Optional: Close lightbox on click outside image
+      document.getElementById("lightbox").addEventListener("click", (e) => {
+        if (e.target.id === "lightbox") closeLightbox();
+      });
+    </script>
+  </body>
 </html>
